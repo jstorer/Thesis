@@ -1,0 +1,27 @@
+
+The Fire Data Set provided by Montesinho Natural Park provides an incredibly difficult classification or regression task due to several factors. First, it is highly right skewed. This leads to a specific target output, in this case 0.0, being highly over represented making the training of ANNs highly difficult as they are not exposed enough to other output values to derive patterns. Second, the size of the data set is an issue. At only 517 entires this is a very small set of data. The limited amount of data also makes training extremely difficult as the small data set is made even smaller for training when dividing up for training and testing. Third, there is very little correlation between the input dimensions and the target output. If the input dimensions are more tightly correlated with the outputs it would result in easier training of ANN. The correlation and small size of the data set could not be changed. However, the skew nature is lessened when applying a log transform to the outputs of the data when normalizing the data set in preparation of using it for ANN training.
+
+The current state of the art works on the Montesinho data set have RMSE values of near 60. This is a very poor result and will not help predicting the burn areas of forest fires in a real world scenario. This thesis seeks to dramatically lower this RMSE score in hopes of being able to apply the findings to other data sets that are small and skewed resulting in two contributions:
+
+\begin{enumerate}
+    \item A novel input structure derived from the data set. Instead of the listed 12-Inputs, 29 are created by expanding categorical data into their own dimensions. Meaning that fields such as month are broken into 12 dimensions where a one value indicates the selected month and a zero value indicates months that are not selected. These two input methods are used in a comparative study using an exhaustive study on activation function and neural network architecture using the backpropagation method. These results demonstrate that the 29-Input method performs better than the 12-Input method for backpropagation trained networks with the activation functions and number of hidden layer nodes providing minimal differences. The PSO trained ANN performs at a much higher level than the backpropagation trained network with the lowest RMSE value of 15.65 for 12 input method and 16.12 for the 29 input method. Even though the 12 input had the overall lowest minimum the 29 input method is still the preferred input style as its results are much more consistent and less volatile throughout different ANN architectures.
+
+    \item Clustering of the data set using two separate methods: k-Means and Spectral. Using these two methods the data set is clustered two, three, and four clusters. Each of the cluster sizes being clustered on the inputs as well as the output dimensions of the data set. These clustering results are then used to train a PSO-ANN to predict the class of the data. Results demonstrate that it is very difficult to train an ANN to reliably predict the class of a data set when clustered on the outputs with values being between 53\% and 68\% depending on the amount of clusters. However, when using the data that is clustered on the inputs results are very good approaching, or even obtaining, 100\% accuracy. The 29-Input method is once again proven to work more reliably than the twelve. Clusters generated and trained using the 29-Input method obtained the best accuracy scores including the 100\% accuracy on inputs.
+\end{enumerate}
+
+
+\section{Future Work}
+
+\begin{itemize}
+    
+    \item Evolutionary undersampling and oversampling techniques \cite{Luengo2010}.
+    
+    \item Deep and Hierarchical Neural Networks.
+    
+    \item Metaheuristic trained Support Vector Machines.
+
+    \item Metaheuristic trained clustering algorithms.
+    
+\end{itemize}
+
+
